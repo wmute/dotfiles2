@@ -1,0 +1,1 @@
+/home/wintermute/.dotfiles/emacs.d/init.el

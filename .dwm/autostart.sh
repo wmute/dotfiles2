@@ -1,0 +1,1 @@
+/home/wintermute/.dotfiles/dwm/autostart.sh
