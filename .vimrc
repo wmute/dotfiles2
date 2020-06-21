@@ -20,6 +20,7 @@ Plug 'keith/swift.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Chiel92/vim-autoformat'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'rust-lang/rust.vim'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': './install.sh'
@@ -27,9 +28,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 "" themes
 Plug '844196/lightline-badwolf.vim'
-Plug 'sjl/badwolf'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -163,7 +162,7 @@ map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 " format file
 map <F7> gg=G<C-o><C-o>
 " autoformat python with black on save 
-autocmd BufWritePre *.py execute ':Black'
+" autocmd BufWritePre *.py execute ':Black'
 " remove trailing whitespace in source files
 autocmd FileType c,cpp,java,php,python autocmd BufWritePre <buffer> %s/\s\+$//e
 " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
