@@ -29,6 +29,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 "" themes
 Plug '844196/lightline-badwolf.vim'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'sjl/badwolf'
 
 call plug#end()
 
@@ -109,9 +110,9 @@ let mapleader = ","
 " FONT
 set guifont=Ubuntu\ Mono\ 13
 " COLORSCHEME
-set background=light
-colorscheme PaperColor
-let g:lightline = {'colorscheme': 'PaperColor'}
+set background=dark
+colorscheme badwolf
+let g:lightline = {'colorscheme': 'badwolf'}
 set termguicolors
 " YCM config file
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"

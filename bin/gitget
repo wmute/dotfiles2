@@ -1,0 +1,22 @@
+#!/usr/bin/python
+
+from pathlib import Path
+import os
+import sys
+import subprocess
+
+
+DEV_FOLDER = "Development"
+home_dir = Path(os.path.expanduser("~"))
+dev_dir = home_dir.joinpath(DEV_FOLDER)
+# check if Dev folder exists
+if not dev_dir.exists():
+    dev_dir.mkdir()
+# repo url
+url = sys.argv[1]
+p = Path(url)
+parts = p.parts[1:]
+repo_disk_path = dev_dir.joinpath(*parts)
+# make repo folder
+repo_disk_path.mkdir(parents=True)
+subprocess.run(["git", "clone", url, repo_disk_path])
