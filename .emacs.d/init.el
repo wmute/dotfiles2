@@ -69,11 +69,14 @@ There are two things you can do about this warning:
 (use-package helm-themes
   :ensure t)
 
-(use-package leuven-theme
+(use-package doom-themes
   :ensure t
   :config
   (set-frame-font "Ubuntu Mono 13")
-  (load-theme 'leuven))
+  (load-theme 'doom-molokai))
+
+(use-package doom-modeline
+  :ensure t)
 
 (use-package powerline
   :ensure t
@@ -134,6 +137,9 @@ There are two things you can do about this warning:
   :init
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+
+(use-package ripgrep
+  :ensure t)
 
 (use-package elpy
   :ensure t
