@@ -1,0 +1,29 @@
+
+Thanks for downloading 
+
+Catalinas - Trend Edition ... from Cupertino Series
+    
+Created	by PT_Alfred
+ 
+ 
+-------------
+
+
+Find me at...
+
+Mastodon: https://mastodon.art/@PTAlfred
+
+Pixelfed: https://pixelfed.social/ptalfred
+
+
+-------------
+
+
+License
+
+This work is licensed under:
+
+CC BY NC ND
+Creative Commons - Attribution - Non commercial - No Derivative Works  4.0 License
+https://creativecommons.org/licenses/by-nc-nd/4.0/
+
