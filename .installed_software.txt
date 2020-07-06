@@ -27,3 +27,5 @@ vlc
 yadm
 rofi
 fonts-font-awesome
+redshift
+redshift-gtk

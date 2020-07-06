@@ -73,7 +73,7 @@ There are two things you can do about this warning:
   :ensure t
   :config
   (set-frame-font "Ubuntu Mono 13")
-  (load-theme 'doom-molokai))
+  (load-theme 'doom-nord-light))
 
 (use-package doom-modeline
   :ensure t
