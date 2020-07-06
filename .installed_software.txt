@@ -25,3 +25,5 @@ speedcrunch
 transmission-gtk
 vlc
 yadm
+rofi
+fonts-font-awesome

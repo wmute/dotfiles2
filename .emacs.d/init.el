@@ -76,7 +76,8 @@ There are two things you can do about this warning:
   (load-theme 'doom-molokai))
 
 (use-package doom-modeline
-  :ensure t)
+  :ensure t
+  :init (doom-modeline-mode 1))
 
 (use-package powerline
   :ensure t
