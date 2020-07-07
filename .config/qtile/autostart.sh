@@ -13,4 +13,4 @@ xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Natural Scrolling Enabled
 # redshift
 redshift -l 40.7128:-74.0060 &
 # compton compositor to reduce tearing
-compton &
+compton --backend glx --paint-on-overlay --vsync opengl-swc &
