@@ -104,9 +104,10 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 
 ### DEFAULT THEME SETTINGS FOR LAYOUTS ###
 layout_theme = {
-    "border_width": 2,
+    "border_width": 3,
     "margin": 10,
     "single_margin": 0,
+    "single_border_width": 0,
     "border_focus": "#5e81ac",
     "border_normal": "#3b4252",
 }
@@ -114,65 +115,14 @@ layout_theme = {
 ### LAYOUTS ###
 layouts = [layout.MonadTall(**layout_theme), layout.Floating(**layout_theme)]
 
-### COLORS ###
-# colors = [["#282a36", "#282a36"], # panel background
-#          ["#44475a", "#44475a"], # background for current screen tab
-#          ["#f8f8f2", "#f8f8f2"], # font color for group names
-#          ["#8be9fd", "#8be9fd"], # border line color for current tab
-#          ["#6272a4", "#6272a4"], # border line color for other tab and odd widgets
-#          ["#bd93f9", "#bd93f9"], # color for the even widgets
-#          ["#50fa7b", "#50fa7b"]] # window name
-
-# Dracula Color Theme
-# colors = [["#282a36", "#282a36"], # Background                [0]
-#          ["#44475a", "#44475a"], # Current Line / Selection  [1]
-# 	  ["#f8f8f2", "#f8f8f2"], # Foreground                [2]
-# 	  ["#6272a4", "#6272a4"], # Comment                   [3]
-# 	  ["#8be9fd", "#8be9fd"], # Cyan                      [4]
-# 	  ["#50fa7b", "#50fa7b"], # Green                     [5]
-# 	  ["#ffb86c", "#ffb86c"], # Orange                    [6]
-# 	  ["#ff79c6", "#ff79c6"], # Pink                      [7]
-# 	  ["#bd93f9", "#bd93f9"], # Purple                    [8]
-# 	  ["#ff5555", "#ff5555"], # Red                       [9]
-# 	  ["#f1fa8c", "#f1fa8c"]] # Yellow                    [10]
-
 # Tomorrow Night Theme
 colors = [
     ["#1d1f21", "#1d1f21"],
-    ["#282a2e", "#282a2e"],
     ["#373b41", "#373b41"],
     ["#c5c8c6", "#c5c8c6"],
-    ["#969896", "#969896"],
-    ["#81a2be", "#81a2be"],
     ["#de935f", "#de935f"],
-    ["#b5bd68", "#b5bd68"],
-    ["#cc6666", "#cc6666"],
-    ["#8abeb7", "#8abeb7"],
-    ["#f0c674", "#f0c674"],
-    ["#b294bb", "#b294bb"],
 ]
 
-# Nord Color Theme
-# colors = [
-#    ["#2e3440", "#2e3440"],  # nord0
-#    ["#3b4252", "#3b4252"],  # nord1
-#    ["#434c5e", "#434c5e"],  # nord2
-#    ["#4c566a", "#4c566a"],  # nord3
-#    ["#d8dee9", "#d8dee9"],  # nord4
-#    ["#e5e9f0", "#e5e9f0"],  # nord5
-#    ["#eceff4", "#eceff4"],  # nord6
-#    ["#8fbcbb", "#8fbcbb"],  # nord7
-#    ["#88c0d0", "#88c0d0"],  # nord8
-#    ["#81a1c1", "#81a1c1"],  # nord9
-#    ["#5e81ac", "#5e81ac"],  # nord10
-#    ["#bf616a", "#bf616a"],  # nord11
-#    ["#d08770", "#d08770"],  # nord12
-#    ["#ebcb8b", "#ebcb8b"],  # nord13
-#    ["#a3be8c", "#a3be8c"],  # nord14
-#    ["#b48ead", "#b48ead"],
-# ]  # nord15
-
-#
 ### PROMPT ###
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
@@ -185,9 +135,16 @@ extension_defaults = widget_defaults.copy()
 ### WIDGETS ###
 
 
+def make_arrow(fg, bg):
+    "helper function to generate arrow textbox with different colors"
+    return widget.TextBox(
+        text="", background=bg, foreground=fg, padding=0, fontsize=37,
+    )
+
+
 def init_widgets_list():
     widgets_list = [
-        widget.Sep(linewidth=0, padding=6, foreground=colors[6], background=colors[0]),
+        widget.Sep(linewidth=0, padding=6, foreground=colors[2], background=colors[0]),
         widget.GroupBox(
             font="Ubuntu Medium",
             fontsize=16,
@@ -198,95 +155,50 @@ def init_widgets_list():
             borderwidth=3,
             active=colors[3],
             inactive=colors[2],
-            rounded=False,
+            rounded=True,
             highlight_color=colors[3],
             highlight_method="text",
-            this_current_screen_border=colors[6],
+            this_current_screen_border=colors[3],
             this_screen_border=colors[0],
             other_current_screen_border=colors[0],
             other_screen_border=colors[0],
-            foreground=colors[6],
+            foreground=colors[2],
             background=colors[0],
         ),
         widget.Sep(linewidth=0, padding=40,),
-        widget.WindowName(foreground=colors[10], background=colors[0], padding=0),
-        widget.TextBox(
-            text="", background=colors[0], foreground=colors[7], padding=0, fontsize=37
-        ),
-        widget.TextBox(
-            text=" ",
-            padding=0,
-            foreground=colors[0],
-            background=colors[7],
-            fontsize=12,
-        ),
+        widget.WindowName(foreground=colors[3], background=colors[0], padding=0),
+        make_arrow(colors[1], colors[0]),
         widget.CPU(
             format="CPU {freq_current}GHz {load_percent}%",
             update_interval=1.0,
-            foreground=colors[0],
-            background=colors[7],
+            foreground=colors[2],
+            background=colors[1],
             padding=5,
         ),
-        widget.TextBox(
-            text="",
-            background=colors[7],
-            foreground=colors[10],
-            padding=0,
-            fontsize=37,
-        ),
+        make_arrow(colors[0], colors[1]),
         widget.TextBox(
             text=" 🌡",
             padding=2,
-            foreground=colors[0],
-            background=colors[10],
+            foreground=colors[2],
+            background=colors[0],
             fontsize=11,
         ),
-        widget.ThermalSensor(foreground=colors[0], background=colors[10], padding=5,),
+        widget.ThermalSensor(foreground=colors[2], background=colors[0], padding=5,),
+        make_arrow(colors[1], colors[0]),
         widget.TextBox(
-            text="",
-            background=colors[10],
-            foreground=colors[8],
-            padding=0,
-            fontsize=37,
+            text="", foreground=colors[2], background=colors[1], padding=0, fontsize=14
         ),
-        widget.TextBox(
-            text="", foreground=colors[0], background=colors[8], padding=0, fontsize=14
-        ),
-        widget.Memory(foreground=colors[0], background=colors[8], padding=5),
-        widget.TextBox(
-            text="", background=colors[8], foreground=colors[9], padding=0, fontsize=37
-        ),
-        widget.Net(
-            interface="enp34s0",
-            format="{down} ↓↑ {up}",
-            foreground=colors[0],
-            background=colors[9],
-            padding=5,
-        ),
-        widget.TextBox(
-            text="", background=colors[9], foreground=colors[7], padding=0, fontsize=37
-        ),
-        widget.TextBox(text="", foreground=colors[0], background=colors[7], padding=0),
-        widget.Volume(foreground=colors[0], background=colors[7], padding=5),
-        widget.TextBox(
-            text="",
-            background=colors[7],
-            foreground=colors[10],
-            padding=0,
-            fontsize=37,
-        ),
-        widget.CurrentLayout(foreground=colors[0], background=colors[10], padding=5),
-        widget.TextBox(
-            text="",
-            background=colors[10],
-            foreground=colors[8],
-            padding=0,
-            fontsize=37,
-        ),
+        widget.Memory(foreground=colors[2], background=colors[1], padding=5),
+        make_arrow(colors[0], colors[1]),
+        widget.TextBox(text="", foreground=colors[2], background=colors[0], padding=0),
+        widget.Volume(foreground=colors[2], background=colors[0], padding=5),
+        make_arrow(colors[1], colors[0]),
+        widget.CurrentLayout(foreground=colors[2], background=colors[1], padding=5),
+        make_arrow(colors[0], colors[1]),
         widget.Clock(
-            foreground=colors[0], background=colors[8], format="%A, %B %d  [ %I:%M %p ]"
+            foreground=colors[2], background=colors[0], format="%A, %B %d  [ %I:%M %p ]"
         ),
-        widget.Systray(background=colors[10], icon_size=20, padding=10),
+        widget.Systray(background=colors[0], icon_size=20, padding=10),
     ]
     return widgets_list
 
