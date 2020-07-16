@@ -69,11 +69,11 @@ There are two things you can do about this warning:
 (use-package helm-themes
   :ensure t)
 
-(use-package leuven-theme
+(use-package doom-themes
   :ensure t
   :config
   (set-frame-font "Source Code Pro 10")
-  (load-theme 'leuven))
+  (load-theme 'doom-one-light))
 
 (use-package doom-modeline
   :ensure t
