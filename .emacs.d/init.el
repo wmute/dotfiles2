@@ -69,15 +69,16 @@ There are two things you can do about this warning:
 (use-package helm-themes
   :ensure t)
 
-(use-package doom-themes
+(use-package leuven-theme
   :ensure t
   :config
-  (set-frame-font "Ubuntu Mono 12")
-  (load-theme 'doom-nord-light))
+  (set-frame-font "Source Code Pro 10")
+  (load-theme 'leuven))
 
 (use-package doom-modeline
   :ensure t
-  :init (doom-modeline-mode 1))
+  :disabled t
+  :config (doom-modeline-mode 1))
 
 (use-package powerline
   :ensure t
@@ -93,20 +94,18 @@ There are two things you can do about this warning:
   :config
   (add-hook 'after-save-hook 'org-table-recalculate-buffer-tables))
 
-(use-package doom-modeline
-  :ensure t
-  :disabled t
-  :init (doom-modeline-mode 1))
-
 (use-package ace-window
   :bind ("M-o" . ace-window)
   :ensure t)
+
+
 
 (use-package key-chord
   :ensure t)
 
 (use-package evil
   :ensure t
+  :disabled t
   :config
   (setq key-chord-two-keys-delay 0.5)
   (setq evil-want-C-u-scroll t)
@@ -138,6 +137,10 @@ There are two things you can do about this warning:
   :init
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+
+(use-package helm-projectile
+  :ensure t
+  :config (helm-projectile-on))
 
 (use-package ripgrep
   :ensure t)
