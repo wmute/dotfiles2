@@ -72,8 +72,8 @@ There are two things you can do about this warning:
 (use-package doom-themes
   :ensure t
   :config
-  (set-frame-font "Source Code Pro 10")
-  (load-theme 'doom-one-light))
+  (set-frame-font "Ubuntu Mono 12")
+  (load-theme 'doom-city-lights))
 
 (use-package doom-modeline
   :ensure t
@@ -105,7 +105,6 @@ There are two things you can do about this warning:
 
 (use-package evil
   :ensure t
-  :disabled t
   :config
   (setq key-chord-two-keys-delay 0.5)
   (setq evil-want-C-u-scroll t)
