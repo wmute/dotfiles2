@@ -72,7 +72,7 @@ There are two things you can do about this warning:
 (use-package doom-themes
   :ensure t
   :config
-  (set-frame-font "Ubuntu Mono 12")
+  (set-frame-font "Ubuntu Mono 13")
   (load-theme 'doom-city-lights))
 
 (use-package doom-modeline
@@ -105,6 +105,7 @@ There are two things you can do about this warning:
 
 (use-package evil
   :ensure t
+  :disabled t
   :config
   (setq key-chord-two-keys-delay 0.5)
   (setq evil-want-C-u-scroll t)
@@ -115,6 +116,7 @@ There are two things you can do about this warning:
 
 (use-package evil-surround
   :ensure t
+  :disabled t
   :init
   (global-evil-surround-mode 1))
 
@@ -242,6 +244,7 @@ There are two things you can do about this warning:
 
 (use-package evil-paredit
   :ensure t
+  :disabled t
   :config
   (add-hook 'emacs-lisp-mode-hook #'evil-paredit-mode)
   (add-hook 'lisp-interaction-mode-hook #'evil-paredit-mode)
