@@ -29,3 +29,6 @@ rofi
 fonts-font-awesome
 redshift
 redshift-gtk
+rar
+unrar
+p7zip-full
