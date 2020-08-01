@@ -73,7 +73,7 @@ There are two things you can do about this warning:
   :ensure t
   :config
   (set-frame-font "Ubuntu Mono 13")
-  (load-theme 'doom-city-lights))
+  (load-theme 'doom-molokai))
 
 (use-package org
   :ensure t
@@ -103,6 +103,18 @@ There are two things you can do about this warning:
   :ensure t
   :init
   (global-evil-surround-mode 1))
+
+
+(use-package evil-paredit
+  :ensure t
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'evil-paredit-mode)
+  (add-hook 'lisp-interaction-mode-hook #'evil-paredit-mode)
+  (add-hook 'cider-repl-mode-hook #'paredit-mode)
+  (add-hook 'ielm-mode-hook #'evil-paredit-mode)
+  (add-hook 'lisp-mode-hook #'evil-paredit-mode)
+  (add-hook 'clojure-mode-hook #'evil-paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'evil-paredit-mode))
 
 (use-package helm
   :ensure t
@@ -226,16 +238,6 @@ There are two things you can do about this warning:
   (add-hook 'clojure-mode-hook #'paredit-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode))
 
-(use-package evil-paredit
-  :ensure t
-  :config
-  (add-hook 'emacs-lisp-mode-hook #'evil-paredit-mode)
-  (add-hook 'lisp-interaction-mode-hook #'evil-paredit-mode)
-  (add-hook 'cider-repl-mode-hook #'paredit-mode)
-  (add-hook 'ielm-mode-hook #'evil-paredit-mode)
-  (add-hook 'lisp-mode-hook #'evil-paredit-mode)
-  (add-hook 'clojure-mode-hook #'evil-paredit-mode)
-  (add-hook 'eval-expression-minibuffer-setup-hook #'evil-paredit-mode))
 
 (use-package irony
   :ensure t
