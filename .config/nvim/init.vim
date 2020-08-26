@@ -117,10 +117,10 @@ let mapleader = ","
 " FONT
 set guifont=Ubuntu\ Mono\ 13
 " COLORSCHEME
+set termguicolors
 set background=dark
 colorscheme badwolf
 let g:lightline = {'colorscheme': 'badwolf'}
-" set termguicolors
 
 
 " better key bindings for UltiSnipsExpandTrigger

@@ -61,6 +61,7 @@ There are two things you can do about this warning:
 ;; (split-window-horizontally)
 (global-hl-line-mode 1)
 (global-display-line-numbers-mode 1)
+(set-frame-font "Ubuntu Mono 13")
 
 ;;;;;;;;;;;;;;
 ;; PACKAGES ;;
@@ -72,7 +73,6 @@ There are two things you can do about this warning:
 (use-package doom-themes
   :ensure t
   :config
-  (set-frame-font "Ubuntu Mono 13")
   (load-theme 'doom-molokai))
 
 (use-package org
