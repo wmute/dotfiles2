@@ -75,6 +75,13 @@ There are two things you can do about this warning:
   :config
   (load-theme 'doom-molokai))
 
+(use-package all-the-icons
+  :ensure t)
+
+(use-package doom-modeline
+  :ensure t
+  :config (doom-modeline-mode 1))
+
 (use-package org
   :ensure t
   :config

@@ -20,23 +20,14 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jremmen/vim-ripgrep'
 Plug 'psf/black'
-Plug 'zah/nim.vim'
-Plug 'keith/swift.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Chiel92/vim-autoformat'
-Plug 'neovimhaskell/haskell-vim'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'ycm-core/YouCompleteMe'
 
 "" themes
 Plug '844196/lightline-badwolf.vim'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'sjl/badwolf'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -117,10 +108,10 @@ let mapleader = ","
 " FONT
 set guifont=Ubuntu\ Mono\ 13
 " COLORSCHEME
+set termguicolors
 set background=dark
-colorscheme badwolf
+colorscheme base16-default-dark
 let g:lightline = {'colorscheme': 'badwolf'}
-" set termguicolors
 
 
 " better key bindings for UltiSnipsExpandTrigger
@@ -139,20 +130,16 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 
-" deoplete 
-let g:deoplete#enable_at_startup = 1
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" YouCompleteMe
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
-
-" Haskell
-set rtp+=~/.vim/plugged/LanguageClient-neovim/
-let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
-
-augroup Haskell
-    autocmd BufWrite *.hs :Autoformat
-    " Don't automatically indent on save, since vim's autoindent for haskell is buggy
-    autocmd FileType haskell let b:autoformat_autoindent=0
-augroup end
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
