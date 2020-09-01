@@ -59,7 +59,7 @@ There are two things you can do about this warning:
 ;; (split-window-horizontally)
 (global-hl-line-mode 1)
 (global-display-line-numbers-mode 1)
-(set-frame-font "Inconsolata Semibold 12")
+(set-frame-font "Ubuntu Mono 13")
 
 ;;;;;;;;;;;;;;
 ;; PACKAGES ;;

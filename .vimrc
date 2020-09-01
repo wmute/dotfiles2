@@ -53,6 +53,8 @@ set backspace=indent,eol,start
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
+" automatically change working directory to current file
+set autochdir
  
 " Stop certain movements from always going to the first character of a line.
 set nostartofline
@@ -110,7 +112,7 @@ set guifont=Ubuntu\ Mono\ 13
 " COLORSCHEME
 set termguicolors
 set background=dark
-colorscheme base16-default-dark
+colorscheme badwolf
 let g:lightline = {'colorscheme': 'badwolf'}
 
 
@@ -135,6 +137,8 @@ let g:syntastic_python_checkers = ['flake8']
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+" autoclose preview window
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
