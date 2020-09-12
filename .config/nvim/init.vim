@@ -22,7 +22,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'psf/black'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Chiel92/vim-autoformat'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "" themes
 Plug '844196/lightline-badwolf.vim'
@@ -130,11 +130,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 
-" YouCompleteMe
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
 " autoclose preview window
 let g:ycm_autoclose_preview_window_after_insertion = 1
 

@@ -59,7 +59,7 @@ There are two things you can do about this warning:
 ;; (split-window-horizontally)
 (global-hl-line-mode 1)
 (global-display-line-numbers-mode 1)
-(set-frame-font "Ubuntu Mono 13")
+(set-frame-font "JetBrains Mono Medium 11")
 
 ;;;;;;;;;;;;;;
 ;; PACKAGES ;;
@@ -68,22 +68,35 @@ There are two things you can do about this warning:
 (use-package helm-themes
   :ensure t)
 
-(use-package doom-themes
+(use-package leuven-theme
   :ensure t
   :config
-  (load-theme 'doom-dark+))
+  (load-theme 'leuven))
 
 (use-package all-the-icons
   :ensure t)
 
 (use-package doom-modeline
   :ensure t
+  :disabled t
   :config (doom-modeline-mode 1))
 
 (use-package org
   :ensure t
   :config
   (add-hook 'after-save-hook 'org-table-recalculate-buffer-tables))
+
+(use-package org-roam
+  :ensure t
+  :hook (after-init . org-roam-mode)
+  :custom (org-roam-directory "/home/dashwood/Notes/")
+  :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n g" . org-roam-graph))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))
+              (("C-c n I" . org-roam-insert-immediate))))
 
 (use-package ace-window
   :bind ("M-o" . ace-window)
