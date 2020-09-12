@@ -68,10 +68,10 @@ There are two things you can do about this warning:
 (use-package helm-themes
   :ensure t)
 
-(use-package leuven-theme
+(use-package modus-operandi-theme
   :ensure t
   :config
-  (load-theme 'leuven))
+  (load-theme 'modus-operandi))
 
 (use-package all-the-icons
   :ensure t)
@@ -89,7 +89,7 @@ There are two things you can do about this warning:
 (use-package org-roam
   :ensure t
   :hook (after-init . org-roam-mode)
-  :custom (org-roam-directory "/home/dashwood/Notes/")
+  :custom (org-roam-directory "/home/dashwood/Dropbox/Notes/")
   :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
                ("C-c n f" . org-roam-find-file)
