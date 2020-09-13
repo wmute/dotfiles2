@@ -83,13 +83,12 @@ There are two things you can do about this warning:
 
 (use-package org
   :ensure t
-  :config
-  (add-hook 'after-save-hook 'org-table-recalculate-buffer-tables))
+  :config (add-hook 'after-save-hook 'org-table-recalculate-buffer-tables))
 
 (use-package org-roam
   :ensure t
   :hook (after-init . org-roam-mode)
-  :custom (org-roam-directory "/home/dashwood/Dropbox/Notes/")
+  :custom (org-roam-directory "/home/dashwood/Insync/hermannkevin@gmail.com/Google Drive/Roam")
   :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
                ("C-c n f" . org-roam-find-file)
