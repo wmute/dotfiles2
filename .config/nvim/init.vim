@@ -110,7 +110,7 @@ set guifont=Ubuntu\ Mono\ 13
 " COLORSCHEME
 set termguicolors
 set background=dark
-colorscheme base16-default-dark
+colorscheme badwolf
 let g:lightline = {'colorscheme': 'badwolf'}
 
 
