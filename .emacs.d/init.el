@@ -59,7 +59,9 @@ There are two things you can do about this warning:
 ;; (split-window-horizontally)
 (global-hl-line-mode 1)
 (global-display-line-numbers-mode 1)
-(set-frame-font "JetBrains Mono Medium 11")
+;; C language family indent style
+(setq c-default-style "linux"
+      c-basic-offset 4)
 
 ;;;;;;;;;;;;;;
 ;; PACKAGES ;;
@@ -68,10 +70,10 @@ There are two things you can do about this warning:
 (use-package helm-themes
   :ensure t)
 
-(use-package modus-operandi-theme
+(use-package doom-themes
   :ensure t
   :config
-  (load-theme 'modus-operandi))
+  (load-theme 'doom-solarized-light))
 
 (use-package all-the-icons
   :ensure t)
@@ -142,9 +144,9 @@ There are two things you can do about this warning:
   (global-set-key (kbd "C-s") #'helm-occur)
   (global-set-key (kbd "C-x C-r") #'helm-recentf)
   (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
-
   (global-set-key (kbd "C-x b") #'helm-buffers-list)
-  (global-set-key (kbd "C-x C-l") #'helm-locate))
+  (global-set-key (kbd "C-x C-l") #'helm-locate)
+  (helm-mode 1))
 
 (use-package projectile
   :ensure t
