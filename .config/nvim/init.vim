@@ -28,6 +28,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug '844196/lightline-badwolf.vim'
 Plug 'sjl/badwolf'
 Plug 'chriskempson/base16-vim'
+Plug 'tomasr/molokai'
 
 call plug#end()
 
@@ -110,8 +111,8 @@ set guifont=Ubuntu\ Mono\ 13
 " COLORSCHEME
 set termguicolors
 set background=dark
-colorscheme badwolf
-let g:lightline = {'colorscheme': 'badwolf'}
+colorscheme molokai
+let g:lightline = {'colorscheme': 'molokai'}
 
 
 " better key bindings for UltiSnipsExpandTrigger
