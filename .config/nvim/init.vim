@@ -19,7 +19,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jremmen/vim-ripgrep'
-Plug 'psf/black'
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Chiel92/vim-autoformat'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -111,7 +111,7 @@ set guifont=Ubuntu\ Mono\ 13
 " COLORSCHEME
 set termguicolors
 set background=dark
-colorscheme molokai
+colorscheme base16-default-dark
 let g:lightline = {'colorscheme': 'molokai'}
 
 

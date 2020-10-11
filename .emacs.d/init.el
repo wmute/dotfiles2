@@ -71,9 +71,7 @@ There are two things you can do about this warning:
   :ensure t)
 
 (use-package doom-themes
-  :ensure t
-  :config
-  (load-theme 'doom-solarized-light))
+  :ensure t)
 
 (use-package all-the-icons
   :ensure t)
