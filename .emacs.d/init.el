@@ -70,7 +70,7 @@ There are two things you can do about this warning:
 (use-package helm-themes
   :ensure t)
 
-(use-package doom-themes
+(use-package base16-theme
   :ensure t)
 
 (use-package all-the-icons
