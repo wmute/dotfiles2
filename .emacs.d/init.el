@@ -85,18 +85,6 @@ There are two things you can do about this warning:
   :ensure t
   :config (add-hook 'after-save-hook 'org-table-recalculate-buffer-tables))
 
-(use-package org-roam
-  :ensure t
-  :hook (after-init . org-roam-mode)
-  :custom (org-roam-directory "/home/dashwood/Insync/hermannkevin@gmail.com/Google Drive/Roam")
-  :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n g" . org-roam-graph))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate))))
-
 (use-package ace-window
   :bind ("M-o" . ace-window)
   :ensure t)
