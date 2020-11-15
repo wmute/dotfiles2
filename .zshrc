@@ -1,45 +1,52 @@
-source ~/.zplug/init.zsh
 
-# specify plugins here
-zplug "plugins/dnf", from:oh-my-zsh
-zplug "plugins/autojump", from:oh-my-zsh
-zplug "plugins/themes", from:oh-my-zsh
-
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
-
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-zplug "plugins/fzf",   from:oh-my-zsh
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-zplug load 
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
 
-# preserve history
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
+# A.
+setopt promptsubst
 
-# fzf customisation
-export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# custom keybindings
-bindkey -s '^O' 'xdg-open "$(fzf)"^J'
+# B.
+zinit wait lucid for \
+        OMZL::git.zsh \
+  atload"unalias grv" \
+        OMZP::git
 
-# opam configuration
-test -r /home/wintermute/.opam/opam-init/init.zsh && . /home/wintermute/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+zinit wait lucid for \
+        OMZP::dnf
 
-alias 'ls'='exa --long --header --git'
+zinit wait lucid for \
+        OMZL::git.zsh \
+  atload"unalias grv" \
+        OMZP::git
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/wintermute/.sdkman"
-[[ -s "/home/wintermute/.sdkman/bin/sdkman-init.sh" ]] && source "/home/wintermute/.sdkman/bin/sdkman-init.sh"
+PS1="READY >" # provide a simple prompt till the theme loads
+
+# C.
+zinit wait'!' lucid for \
+    OMZL::prompt_info_functions.zsh \
+    OMZT::robbyrussell
+
+# D.
+zinit wait lucid for \
+  atinit"zicompinit; zicdreplay"  \
+        zdharma/fast-syntax-highlighting \
+      OMZP::colored-man-pages \
+  as"completion" \
+        OMZP::docker/_docker
+
+zinit wait lucid light-mode for \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions
