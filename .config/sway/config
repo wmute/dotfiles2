@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -107,7 +107,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+r reload
 
 # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -186,8 +186,9 @@ client.background       #F8F8F2
 # # USER CONFIG #
 #################
 
-for_window [class="^.*"] border pixel 2
-for_window [class="Nautilus"] floating enable
+for_window [class="^.*"] border pixel 1
+default_border none
+for_window [app_id="org.gnome.Nautilus"] floating enable
 hide_edge_borders smart
 set $border-width 0
 # file manager
@@ -227,5 +228,6 @@ input 2:7:SynPS/2_Synaptics_TouchPad {
 # AUTOSTART SETUP #
 ###################
 
-output LVDS-1 bg ~/Pictures/BLACK_IX_desktop-2.jpg fill
+output "*" background "~/Pictures/Wallpapers/forest.jpg" fill
+
 exec xrdb ~/.Xresources
